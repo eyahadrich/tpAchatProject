@@ -38,5 +38,79 @@ pipeline {
             }          
             }
         }
+         stage("build poject")
+        {
+            steps{
+                echo 'building maven project'
+                sh 'mvn -Dmaven.test.skip=true clean package'
+            }
+        }
+        stage('Unit test')
+        {
+            steps{
+                echo " testing the app .."
+                sh "mvn test"
+            }
+        }
+        stage("sonarqube analysis")
+        {
+             
+           steps{
+             script{
+                withSonarQubeEnv(credentialsId: 'sonar_credentials')
+                {
+                    sh 'mvn clean package sonar:sonar'
+                }
+                
+             }
+           }
+        }
+
+        stage("Quality status")
+        { 
+           steps{
+             script{
+                waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-auth'
+             }
+           }
+        }
+         stage("build docker image")
+        {
+            
+            steps{
+                echo "building docker images"
+                sh "docker image prune"
+                sh "docker container prune"
+                sh "docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME} ."
+            }
+        }
+        stage("pushing docker image to dockerhub")
+        {
+              
+         steps{
+         echo "pushing docker images ... "
+            withCredentials([usernamePassword(credentialsId: 'dockerhub_cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+               echo "login to dockerhub images repos"
+               sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
+               echo "push the images to dockerhub"
+               sh "docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME}"
+            }    
+        }           
+        }
+        stage("run app with docker-compose")
+        {
+            steps{
+                sh "docker-compose down"
+                sh "IMAGE_NAME=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME} docker-compose up -d --no-recreate" 
+            }
+        }
+        stage("Email notification")
+        {
+        steps{
+            echo "${BUILD_URL}"
+            mail bcc: '', body: "Check console output at ${env.BUILD_URL}consoleText to view the results.", cc: '', from: '', replyTo: '', subject: "${env.BRANCH_NAME} - Build # ${env.BUILD_TAG}", to: 'hamdi.nahdi@esprit.tn'
+           
+        }
+        }
     }
 }
