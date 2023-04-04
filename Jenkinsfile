@@ -7,7 +7,7 @@ pipeline {
     
     environment {
         DOCKERHUB_USERNAME ="eyahadrich"
-        DOCKERHUB_REPO = "riadhapps"
+        DOCKERHUB_REPO = "my-repo"
         TARGET_BRANCH = "main" // hedi tetbadel selon el branch eli bech truni aleha script
     } 
 
