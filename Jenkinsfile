@@ -59,7 +59,7 @@ pipeline {
                 echo " testing the app .."
                 sh "mvn test"
             }
-        }*/
+        }
         stage("sonarqube analysis")
         {
              
@@ -78,10 +78,10 @@ pipeline {
         { 
            steps{
              script{
-                waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-login-to-sonarqube'
+                waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube-token'
              }
            }
-        }
+        }*/
          stage("build docker image")
         {
             
