@@ -64,7 +64,7 @@ pipeline {
              
            steps{
              script{
-                withSonarQubeEnv(installationName: 'jenkins')
+                withSonarQubeEnv(installation: 'sonarqube')
                 {
                     sh 'mvn clean package sonar:sonar'
                 }
@@ -77,7 +77,7 @@ pipeline {
         { 
            steps{
              script{
-                waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-auth'
+                waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-login-to-sonarqube'
              }
            }
         }
