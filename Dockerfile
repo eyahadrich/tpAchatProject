@@ -1,5 +1,6 @@
- openjdk:11
+FROM openjdk:11
 EXPOSE 8089
+
 
 WORKDIR /usr/app
 
