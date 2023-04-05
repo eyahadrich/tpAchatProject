@@ -23,7 +23,7 @@ pipeline {
                 def version = matcher[1][1]
                 echo "${version}"
                 env.IMAGE_NAME= "$version"
-                withCredentials([usernamePassword(credentialsId: 'github-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'github-jenkins-token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh 'pwd'
                     sh 'git config --global user.email "jenkins@exemple.com"'
                     sh 'git config --global user.name "jenkins"'
