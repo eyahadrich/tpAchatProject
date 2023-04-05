@@ -12,7 +12,6 @@ pipeline {
     } 
 
     stages {
-        /*
         stage("increment project version")
         {
             steps{
@@ -59,7 +58,7 @@ pipeline {
                 echo " testing the app .."
                 sh "mvn test"
             }
-        }
+        }/*
         stage("sonarqube analysis")
         {
              
@@ -97,7 +96,7 @@ pipeline {
               
          steps{
          echo "pushing docker images ... "
-            withCredentials([usernamePassword(credentialsId: 'dockerhub_cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+            withCredentials([usernamePassword(credentialsId: 'dockerhub-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                echo "login to dockerhub images repos"
                sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                echo "push the images to dockerhub"
