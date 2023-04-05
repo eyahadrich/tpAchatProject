@@ -23,20 +23,26 @@ pipeline {
                 def version = matcher[1][1]
                 echo "${version}"
                 env.IMAGE_NAME= "$version"
-                withCredentials([usernamePassword(credentialsId: 'github-auth', usernameVariable: 'USERNAME', passwordVariable: 'MY_PASSWORD')]) {
-                    sh '${PASSWORD} - ${USERNAME}'
-                    sh 'pwd'
-                    sh 'git config --global user.email "jenkins@exemple.com"'
-                    sh 'git config --global user.name "jenkins"'
-                    sh 'git config --list'
-                    sh 'git remote set-url origin  https://${USERNAME}:${MY_PASSWORD}@github.com/eyahadrich/tpAchatProject'
-                    sh 'git add .'
-                    sh 'git commit -m "update project version"'
-                    sh 'git pull origin ${TARGET_BRANCH}'
-                    sh 'git branch'
-                    sh 'git push origin HEAD:${TARGET_BRANCH}'
-                }
             }          
+            }
+        }
+         stage("commit version update")
+        {
+            steps{
+                script{
+                    withCredentials([usernamePassword(credentialsId: 'github-jenkins-token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh 'pwd'
+                        sh 'git config --global user.email "jenkins@exemple.com"'
+                        sh 'git config --global user.name "jenkins"'
+                        sh 'git config --list'
+                        sh 'git remote set-url origin  https://${USERNAME}:${PASSWORD}@github.com/CodeWizards007/devops-API'
+                        sh 'git add .'
+                        sh 'git commit -m "update project version"'
+                        sh 'git pull origin ${TARGET_BRANCH}'
+                        sh 'git branch'
+                        sh 'git push origin HEAD:${TARGET_BRANCH}'
+                    }
+                }
             }
         }
          stage("build poject")
