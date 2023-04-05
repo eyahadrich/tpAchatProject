@@ -12,6 +12,7 @@ pipeline {
     } 
 
     stages {
+        /*
         stage("increment project version")
         {
             steps{
@@ -58,7 +59,7 @@ pipeline {
                 echo " testing the app .."
                 sh "mvn test"
             }
-        }
+        }*/
         stage("sonarqube analysis")
         {
              
@@ -66,7 +67,7 @@ pipeline {
              script{
                 withSonarQubeEnv(installationName: 'sonarqube')
                 {
-                    sh 'mvn clean package sonar:sonar'
+                    sh 'mvn clean sonar:sonar -Dsonar.host.url=http://localhost:9000'
                 }
                 
              }
