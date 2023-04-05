@@ -9,9 +9,9 @@
       <!-- lookup parent from repository -->
    </parent>
    <groupId>com.esprit.examen</groupId>
-   <artifactId>tpAchatProject</artifactId>
+   <artifactId>tpAchaachattProject</artifactId>
    <version>1.0.9</version>
-   <name>tpAchatProject</name>
+   <name>achat</name>
    <description>tpAchatProject</description>
    <properties>
 		<java.version>1.8</java.version>
