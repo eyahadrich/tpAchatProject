@@ -98,8 +98,8 @@ pipeline {
          echo "pushing docker images ... "
            script{
              withCredentials([usernamePassword(credentialsId: 'dockerhub-auth', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-               echo "login to dockerhub images repos ${PASWWORD}"
-               sh "echo $pwd | docker login -u $USERNAME --password-stdin"
+               echo "login to dockerhub images repos ${PASSWORD}"
+               sh "echo $PASSWORD | docker login -u $USERNAME --password-stdin"
                echo "push the images to dockerhub"
                sh "docker push ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME}"
             }   
