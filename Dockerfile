@@ -1,8 +1,5 @@
-FROM openjdk:11-jre-alpine
-
+ openjdk:11
 EXPOSE 8089
-
-
 
 WORKDIR /usr/app
 
