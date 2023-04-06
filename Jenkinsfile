@@ -66,7 +66,7 @@ pipeline {
              script{
                 withSonarQubeEnv(installationName: 'sonarqube')
                 {
-                    sh 'mvn clean sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=admin -Dsonar.password=eya97'
+                    sh 'mvn clean sonar:sonar -Dsonar.login=admin -Dsonar.password=eya97'
                 }
                 
              }
