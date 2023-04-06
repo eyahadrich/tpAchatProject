@@ -12,7 +12,7 @@ pipeline {
     } 
 
     stages {
-        
+        /*
         stage("increment project version")
         {
             steps{
@@ -73,7 +73,7 @@ pipeline {
              }
            }
         }
-
+        */
         stage("Quality status")
         { 
            steps{
