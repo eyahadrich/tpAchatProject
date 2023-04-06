@@ -12,7 +12,7 @@ pipeline {
     } 
 
     stages {
-        /*
+        
         stage("increment project version")
         {
             steps{
@@ -59,7 +59,7 @@ pipeline {
                 echo " testing the app .."
                 sh "mvn test"
             }
-        }*/
+        }
         stage("sonarqube analysis")
         {
              
