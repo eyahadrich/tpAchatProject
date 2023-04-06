@@ -59,7 +59,7 @@ pipeline {
                 echo " testing the app .."
                 sh "mvn test"
             }
-        }
+        }*/
         stage("sonarqube analysis")
         {
              
@@ -73,7 +73,7 @@ pipeline {
              }
            }
         }
-        */
+        
         stage("Quality status")
         { 
            steps{
