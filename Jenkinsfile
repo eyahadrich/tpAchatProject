@@ -12,7 +12,6 @@ pipeline {
     } 
 
     stages {
-        /*
         stage("increment project version")
         {
             steps{
@@ -59,7 +58,7 @@ pipeline {
                 echo " testing the app .."
                 sh "mvn test"
             }
-        }*/
+        }
         stage("sonarqube analysis")
         {
              
@@ -92,7 +91,7 @@ pipeline {
             
             steps{
                 echo "building docker images"
-                sh "docker image prune"
+                sh "docker image prune -f"
                 sh "docker container prune"
                 sh "docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME} ."
             }
