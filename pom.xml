@@ -10,7 +10,7 @@
    </parent>
    <groupId>com.esprit.examen</groupId>
    <artifactId>achat</artifactId>
-   <version>1.0.33</version>
+   <version>1.0.34</version>
    <name>achat</name>
    <description>achat</description>
    <properties>
