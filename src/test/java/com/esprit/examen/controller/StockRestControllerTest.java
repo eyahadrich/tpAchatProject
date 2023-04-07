@@ -1,4 +1,4 @@
-package com.esprit.examen.achat.controllers;
+package com.esprit.examen.controllers;
 
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doNothing;
@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.services.IStockService;
+import com.esprit.examen.controllers.StockRestController;
 
 @ContextConfiguration(classes = {StockRestController.class})
 @ExtendWith(SpringExtension.class)

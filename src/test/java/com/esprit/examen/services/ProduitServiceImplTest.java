@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.services;
+package com.esprit.examen.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -34,7 +34,7 @@ import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.CategorieProduitRepository;
 import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
-
+import com.esprit.examen.services.ProduitServiceImpl;
 @ContextConfiguration(classes = {ProduitServiceImpl.class})
 @ExtendWith(SpringExtension.class)
 class ProduitServiceImplTest {
