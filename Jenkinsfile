@@ -96,6 +96,14 @@ pipeline {
                 sh "docker build -t ${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME} ."
             }
         }
+        stage("run app with docker-compose")
+        {
+            steps{
+                sh "docker-compose down"
+                sh "IMAGE_NAME=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME} docker-compose up -d --no-recreate" 
+            }
+        }
+
         stage("pushing docker image to dockerhub")
         {
               
@@ -110,13 +118,6 @@ pipeline {
             }   
            } 
         }           
-        }
-        stage("run app with docker-compose")
-        {
-            steps{
-                sh "docker-compose down"
-                sh "IMAGE_NAME=${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO}:maven-${IMAGE_NAME} docker-compose up -d --no-recreate" 
-            }
         }
         stage("Email notification")
         {
