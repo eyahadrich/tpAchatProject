@@ -56,7 +56,7 @@ pipeline {
         {
             steps{
                 echo " testing the app .."
-                sh "mvn clean test"
+                sh "mvn  test"
             }
         }
         stage("sonarqube analysis")
