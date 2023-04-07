@@ -27,13 +27,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import tn.esprit.rh.achat.entities.CategorieProduit;
-import tn.esprit.rh.achat.entities.DetailFacture;
-import tn.esprit.rh.achat.entities.Produit;
-import tn.esprit.rh.achat.entities.Stock;
-import tn.esprit.rh.achat.repositories.CategorieProduitRepository;
-import tn.esprit.rh.achat.repositories.ProduitRepository;
-import tn.esprit.rh.achat.repositories.StockRepository;
+import com.esprit.examen.achat.entities.CategorieProduit;
+import com.esprit.examen.achat.entities.DetailFacture;
+import com.esprit.examen.achat.entities.Produit;
+import com.esprit.examen.achat.entities.Stock;
+import com.esprit.examen.achat.repositories.CategorieProduitRepository;
+import com.esprit.examen.achat.repositories.ProduitRepository;
+import com.esprit.examen.achat.repositories.StockRepository;
 
 @ContextConfiguration(classes = {ProduitServiceImpl.class})
 @ExtendWith(SpringExtension.class)
