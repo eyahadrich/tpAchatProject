@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import com.esprit.examen.achat.entities.Stock;
+import com.esprit.examen.entities.Stock;
 import com.esprit.examen.services.IStockService;
 
 @ContextConfiguration(classes = {StockRestController.class})
