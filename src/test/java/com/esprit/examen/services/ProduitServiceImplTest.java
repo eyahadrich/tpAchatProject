@@ -68,7 +68,7 @@ class ProduitServiceImplTest {
      */
     @Test
     void testRetrieveAllProduits2() {
-        CategorieProduit categorieProduit = new CategorieProduit();
+        categorieProduit categorieProduit = new CategorieProduit();
         categorieProduit.setCodeCategorie("Code Categorie");
         categorieProduit.setIdCategorieProduit(1L);
         categorieProduit.setLibelleCategorie("Libelle Categorie");
@@ -125,7 +125,7 @@ class ProduitServiceImplTest {
         doNothing().when(produit).setCodeProduit((String) any());
         doNothing().when(produit).setDateCreation((Date) any());
         doNothing().when(produit).setDateDerniereModification((Date) any());
-        doNothing().when(produit).setDetailFacture((Set<DetailFacture>) any());
+        doNothing().when(produit).setDetailFacture((Set<detailFacture>) any());
         doNothing().when(produit).setIdProduit((Long) any());
         doNothing().when(produit).setLibelleProduit((String) any());
         doNothing().when(produit).setPrix(anyFloat());
