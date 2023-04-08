@@ -6,7 +6,7 @@ pipeline {
 
     
     environment {
-        NEXUS_VERSION = "nexus2"
+        NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "192.168.49.1:8081"
         NEXUS_REPOSITORY = "maven-app"
@@ -110,9 +110,9 @@ pipeline {
                     if(artifactExists) {
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
-                            nexusVersion: NEXUS_VERSION,
-                            protocol: NEXUS_PROTOCOL,
-                            nexusUrl: "192.168.49.1:8081/repository/maven-app/",
+                            nexusVersion: 'nexus3',
+                            protocol: 'http',
+                            nexusUrl: "192.168.49.1:8081",
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: NEXUS_REPOSITORY,
