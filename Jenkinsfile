@@ -95,6 +95,7 @@ pipeline {
         {
             steps{
                 script{
+                    echo "${NEXUS_URL}";
                       // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     def pom = readMavenPom file: 'pom.xml';
                     writeMavenPom model: pom;
