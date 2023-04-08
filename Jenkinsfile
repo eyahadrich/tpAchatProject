@@ -95,7 +95,6 @@ pipeline {
         {
             steps{
                 script{
-                    echo "${NEXUS_URL}";
                       // Read POM xml file using 'readMavenPom' step , this step 'readMavenPom' is included in: https://plugins.jenkins.io/pipeline-utility-steps
                     def pom = readMavenPom file: 'pom.xml';
                     writeMavenPom model: pom;
@@ -113,7 +112,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
-                            nexusUrl: NEXUS_URL,
+                            nexusUrl: "192.168.49.1:8081/repository/maven-app/",
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: NEXUS_REPOSITORY,
