@@ -106,9 +106,12 @@ pipeline {
                     artifactPath = filesByGlob[0].path;
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
-                    nexusArtifactUploader(
+                   
+                    if(artifactExists) {
+                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
+                        nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
-                            //protocol: NEXUS_PROTOCOL,
+                            protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
                             groupId: pom.groupId,
                             version: pom.version,
@@ -123,13 +126,10 @@ pipeline {
                                 ],
                             ]
                         );
-                    /*if(artifactExists) {
-                        echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
-                        
 
                     } else {
                         error "*** File: \${artifactPath}, could not be found";
-                    }*/
+                    }
                 }
             }
         }
