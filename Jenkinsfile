@@ -9,7 +9,7 @@ pipeline {
         NEXUS_VERSION = "nexus2"
         NEXUS_PROTOCOL = "http"
         NEXUS_URL = "http://192.168.49.1:8081"
-        NEXUS_REPOSITORY = "achatApp-release"
+        NEXUS_REPOSITORY = "maven-app"
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials" 
         DOCKERHUB_USERNAME ="eyahadrich"
         DOCKERHUB_REPO = "devops"
@@ -123,7 +123,8 @@ pipeline {
                                 [artifactId: pom.artifactId,
                                 classifier: '',
                                 file: artifactPath,
-                                type: pom.packaging],
+                                type: pom.packaging
+                                ],
                             ]
                         );
 
