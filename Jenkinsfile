@@ -8,7 +8,7 @@ pipeline {
     environment {
         NEXUS_VERSION = "nexus2"
         NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "http://192.168.49.1:8081"
+        NEXUS_URL = "192.168.49.1:8081"
         NEXUS_REPOSITORY = "maven-app"
         NEXUS_CREDENTIAL_ID = "nexus-user-credentials" 
         DOCKERHUB_USERNAME ="eyahadrich"
