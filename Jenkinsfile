@@ -91,6 +91,7 @@ pipeline {
              }
            }
         }
+        /*
         stage("push to nexus")
         {
             steps{
@@ -132,7 +133,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
          stage("build docker image")
         {
             
